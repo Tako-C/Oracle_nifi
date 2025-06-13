@@ -1,0 +1,14 @@
+services:
+  oracledb:
+    image: container-registry.oracle.com/database/express
+    container_name: OracleXE_Nifi
+    environment:
+      ORACLE_PWD: "newPassword1234"
+      ORACLE_CHARACTERSET: "AL32UTF8"
+    ports:
+      - "1591:1521"
+      - "5590:5500"
+    volumes:
+          - ./script_db_nifi.sql:/tmp/script_db_nifi.sql
+    restart: unless-stopped
+
